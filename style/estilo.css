@@ -2,29 +2,246 @@
 padding: 0;
 border: 0;
 }
+html {
+    scroll-behavior: smooth;
+    }
 body{
     background-image: url(../media/pexels-rodnae-productions-5698853.jpg);
     background-size: cover;
 }
+
 .navbar{
     background-image: url(../media/marble-2398956_1280.jpg);
     background-size: cover;
 }
+li a{
+    background-color: greenyellow;
+    border-radius: 5px;
+    text-decoration-line: none;
+    color: black;
+
+}
+li a:hover{
+    background-color: indigo;
+}
 h1{
     color: white;
-    font-size:xx-large;
+    font-size:x-large;
     
 }
 nav li{
     display: inline-block;
     padding: 20px;
-
+    
 }
 main{
-    height: 100vh;
     background-color: transparent;
+    padding: 20px;
+    padding-top: 200px;
+} 
+.champs{
+    height: 300px;
+    display: flex;
+    align-items: end;
+    justify-content: end;   
+}
+.champs:hover{
+    scale: 1.05;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+
+}
+.precio{
+    height:40px ;
+    width: 100px;
+    color: black;
+    background-color: white;
+    text-align: center;
+    padding-top: 5px ;
+    font-weight: bold;
+    font-size:medium;
+}
+.champs button{
+    height: 40px;
+    width: 60px;
+    background-color: greenyellow;
+}
+.champs button:hover{
+    background-color: indigo;
+}
+h2{
+    text-align: center;
+    color: greenyellow;
+    font-size: x-large;
+
+}
+
+#i1{
+    background-image:url(../media/adidas/adidas-5418991_1280.jpg);
+    background-position: center;
+    background-size: cover;
+    
+    
+}
+#i2{
+    background-image:url(../media/adidas/adidas-5418998_640.jpg);
+    background-position: center;
+    background-size: cover;
+}
+#i3{
+    background-image:url(../media/adidas/adidas-1853899_1280.jpg);
+    background-position: center;
+    background-size: cover;
+}
+#i4{
+    background-image:url(../media/adidas/shoe-5408627_640.png);
+    background-position: center;
+    background-size: cover;
+}
+#i5{
+    background-image:url(../media/jordan/nike-4687824_1280.jpg);
+    background-position: center;
+    background-size: cover;
+}
+#i6{
+    background-image:url(../media/jordan/alin-surdu-nXz5t1zlPaA-unsplash.jpg);
+    background-position: center;
+    background-size: cover;
+}
+#i7{
+    background-image:url(../media/jordan/jordan-4657349_1280.jpg);
+    background-position: center;
+    background-size: cover;
+}
+#i8{
+    background-image:url(../media/jordan/sneakers-5578127_1280.jpg);
+    background-position: center;
+    background-size: cover;
+}
+#i9{
+    background-image:url(../media/nike/nike-5020364_1280.jpg);
+    background-position: center;
+    background-size: cover;
+}
+#i10{
+    background-image:url(../media/nike/nike-5067984_1280.jpg);
+    background-position: center;
+    background-size: cover;
+}
+#i11{
+    background-image:url(../media/nike/nike-5099507_1280.jpg);
+    background-position: center;
+    background-size: cover;
+}
+#i12{
+    background-image:url(../media/nike/nike-5644799_1280.jpg);
+    background-position: center;
+    background-size: cover;
+}
+#i13{
+    background-image:url(../media/nike/nike-react-5595746_1280.jpg);
+    background-position: center;
+    background-size: cover;
+}
+#i14{
+    background-image:url(../media/nike/shoe-5087659_1280.jpg);
+    background-position: center;
+    background-size: cover;
+}
+#i15{
+    background-image:url(../media/nike/sneakers-5408667_1280.png);
+    background-position: center;
+    background-size: cover;
+}
+#i16{
+    background-image:url(../media/nike/sneakers-5716200_1280.jpg);
+    background-position: center;
+    background-size: cover;
+}
+#i17{
+    background-image:url(../media/puma/photo-1616258374372-6801d31bdbed.avif);
+    background-position: center;
+    background-size: cover;
+}
+#i18{
+    background-image:url(../media/puma/photo-1608231387042-66d1773070a5.avif);
+    background-position: center;
+    background-size: cover;
+}
+.productos{
+    background-image: url(../media/marble-2398956_1280.jpg);
+    background-size: cover;
+    height: 100vh;
+
+}
+.cregistro{
+    background-color: indigo;
+    color: white;
+    font-weight: bold;
+    font-size: x-large;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+}
+.cregistro button{
+    background-color: greenyellow;
+    color: black;
+    font-weight: bold;
+}
+.cregistro button:hover{
+    background-image: url(../media/marble-2398956_1280.jpg);
+    color: white;
+}
+.clogin{
+    background-color: greenyellow;
+    color: white;
+    font-weight: bold;
+    font-size: x-large;
+    color: black;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+}
+.clogin button{
+    background-color: indigo;
+    font-weight: bold;
+    color: white;
+    border-radius: 5px;
+}
+.clogin button:hover{
+    background-image: url(../media/marble-2398956_1280.jpg);
+}
+.productos{
+    color: greenyellow;
+    font-weight: bold;
+    font-size: x-large;
+    text-align: center;
+}
+#laul{
+    border-bottom: 1px solid greenyellow;
+}
+#laul li{
+    list-style: none;
+    color: white;
+    font-weight: bold;
+    font-size: x-large;
+    text-align: center;
 }
 footer{
     background-color: black;
     color: white;
+    margin-top: 30px;
+    position: absolute;
+    width: 100%;
+    height: 150px;
+    font-size:x-large;
 }
+footer .subir {
+    height: 40px;
+    width: 40px;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    text-align: center;
+    line-height: 40px;
+    color: greenyellow;
+    font-size: xx-large;
+    }
+    footer .subir i:hover {
+    color: indigo;
+    }

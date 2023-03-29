@@ -1,83 +1,100 @@
-function Validacion(edad, ci){
-    if ( edad > 18){
-        validar = true;
-        console.log(edad);}
-    if ( edad < 18){
-        validar = false;
-        alert("edad no permitida");
-    }
-    if ( ci > 10000000 && ci < 70000000) {
-        validar = true;
-        console.log(ci);}
-    if (ci < 10000000 || ci > 70000000) {
-        validar = false;
-        alert("ci no admitida");
-    }
-    return validar;
-}
-
-function buscarproducto(nombre, propiedades){
-    const buscador = productos.filter(producto => producto[propiedades] == nombre);
-    return buscador;
-}
-
-function buscarporid(articulobuscado) {
-    for(i=0 ; i<productos.length; i++){
-    if (productos[i].id === articulobuscado){
-        return productos[i].precio;
-    }
-    }
-    return null
-}
-alert("bienvenido a tuzapas.")
-let idp = prompt("ingrese su nombre y apellido")
-console.log(idp);
-let edad = parseInt(prompt("ingrese su edad"))
-let ci = parseInt(prompt("ingrese su CI(sin puntos o guiones)"))
-Validacion(edad, ci);
-
+const ver = document.getElementById("i1")
+const ver1 = document.getElementById("i2")
+const ver2 = document.getElementById("i3")
+const ver3 = document.getElementById("i4")
+const ver4 = document.getElementById("i5")
+const ver5 = document.getElementById("i6")
+const ver6 = document.getElementById("i7")
+const ver7 = document.getElementById("i8")
+const ver8 = document.getElementById("i9")
+const ver9 = document.getElementById("i10")
+const ver10 = document.getElementById("i11")
+const ver11 = document.getElementById("i12")
+let carrito = []
 const productos = [
-    {id : 1, articulo: "air force", marca: "nike", precio: "6000" },
-    {id : 2, articulo: "Forum Mid", marca: "adidas", precio: "5000" },
-    {id : 3, articulo: "bambas", marca: "puma", precio: "5500" },
-    {id : 4, articulo: "jordan 1", marca: "nike", precio: "7000" },
-];
-let marcaelegida = prompt("De que marca van a ser tus zapas?");
-let marcaproductos = buscarproducto(marcaelegida, "marca");
+    producto1 = {id:"1", nombre:"adidas1", precio:"7500", descuento:"10%"},
+    producto2 = {id:"2", nombre:"adidas2", precio:"4000"},
+    producto3 = {id:"3", nombre:"adidas3", precio:"4500"},
+    producto4 = {id:"4", nombre:"adidas4", precio:"5500"},
+    producto5 = {id:"5", nombre:"jordan1", precio:"15000", descuento:"15%"},
+    producto6 = {id:"6", nombre:"jordan2", precio:"10000"},
+    producto7 = {id:"7", nombre:"jordan3", precio:"12000"}, 
+    producto8 = {id:"8", nombre:"jordan4", precio:"10500"},
+    producto9 = {id:"9", nombre:"nike1", precio:"5500"},
+    producto10 = {id:"10", nombre:"nike2", precio:"8000"},
+    producto11 = {id:"11", nombre:"nike3", precio:"6500"}, 
+    producto12 = {id:"12", nombre:"nike4", precio:"7600"},
+    ];
 
-console.log(marcaproductos)
-
-while(marcaproductos.length === 0) {
-    marcaelegida = prompt("Marca incorrecta, vuelva a ingresarla. De que marca van a ser tus zapas?");
-    marcaproductos = buscarproducto(marcaelegida, "marca");
-}
-let nombrearticulo = marcaproductos.map(producto => producto.articulo);
-let articulobuscado = prompt(`cual es el modelo que te gustaria seleccionar: ${JSON.stringify(marcaproductos)} (ingrese el precio de las zapas que quieres:)`);
-let preciofinal = articulobuscado *1.22;
-alert (`el precio final de tus zapas ${idp} es: ${preciofinal}`)
-console.log(preciofinal);
-
-const mismarcas = ["jordan", "nike" , "puma" , "adidas"];
-const ofertas = [
-    {id : 1, marca : "jordan", articulo : "short", precio : "1700", descuento : "15%off" },
-    {id : 2, marca : "jordan", articulo : "remera", precio : "700", descuento : "15%off" },
-    {id : 3, marca : "jordan", articulo : "bolso", precio : "2700", descuento : "25%off" },
-    {id : 4, marca : "nike", articulo : "medias", precio : "500", descuento : "25%off" },
-    {id : 5, marca : "nike", articulo : "remera", precio : "700", descuento : "15%off" },
-    {id : 6, marca : "nike", articulo : "canguro", precio : "3700", descuento : "20%off" },
-    {id : 7, marca : "puma", articulo : "remera", precio : "700", descuento : "15%off" },
-    {id : 8, marca : "puma", articulo : "gorro", precio : "500", descuento : "15%off" },
-    {id : 9, marca : "puma", articulo : "camiseta", precio : "1700", descuento : "25%off" },
-    {id : 10, marca : "adidas", articulo : "musculosa", precio : "700", descuento : "20%off" },
-    {id : 11, marca : "adidas", articulo : "pantalon deportivo", precio : "2700", descuento : "15%off" },
-    {id : 12, marca : "adidas", articulo : "billetera", precio : "700", descuento : "15%off" },
-];
-let marcafavorita = prompt("cual es tu marca favorita?");
-if (mismarcas.includes(marcafavorita) ){
-    console.log(marcafavorita)
-    let tuoferta = ofertas.filter(ofertas => ofertas.marca === marcafavorita);
-        alert("te dejamos algunas ofertas:" + " " );
-        tuoferta.forEach(ofertas => alert(`- ${ofertas.articulo} ${ofertas.marca}: $${ofertas.precio}(${ofertas.descuento})`))
-}else { 
-    console.log(marcafavorita)
-}
+ver.addEventListener("click", () =>{
+    carrito.push(productos[0])
+    console.log(carrito)
+    localStorage.setItem("encarrito", JSON.stringify (carrito));
+console.log(localStorage.getItem("encarrito"))
+});
+ver1.addEventListener("click", () =>{
+    carrito.push(productos[1])
+    console.log(carrito)
+    localStorage.setItem("encarrito", JSON.stringify (carrito));
+console.log(localStorage.getItem("encarrito"))
+});
+ver2.addEventListener("click", () =>{
+    carrito.push(productos[2])
+    console.log(carrito)
+    localStorage.setItem("encarrito", JSON.stringify (carrito));
+console.log(localStorage.getItem("encarrito"))
+});
+ver3.addEventListener("click", () =>{
+    carrito.push(productos[3])
+    console.log(carrito)
+    localStorage.setItem("encarrito", JSON.stringify (carrito));
+console.log(localStorage.getItem("encarrito"))
+});
+ver4.addEventListener("click", () =>{
+    carrito.push(productos[4])
+    console.log(carrito)
+    localStorage.setItem("encarrito", JSON.stringify (carrito));
+console.log(localStorage.getItem("encarrito"))
+});
+ver5.addEventListener("click", () =>{
+    carrito.push(productos[5])
+    console.log(carrito)
+    localStorage.setItem("encarrito", JSON.stringify (carrito));
+console.log(localStorage.getItem("encarrito"))
+});
+ver6.addEventListener("click", () =>{
+    carrito.push(productos[6])
+    console.log(carrito)
+    localStorage.setItem("encarrito", JSON.stringify (carrito));
+console.log(localStorage.getItem("encarrito"))
+});
+ver7.addEventListener("click", () =>{
+    carrito.push(productos[7])
+    console.log(carrito)
+    localStorage.setItem("encarrito", JSON.stringify (carrito));
+console.log(localStorage.getItem("encarrito"))
+});
+ver8.addEventListener("click", () =>{
+    carrito.push(productos[8])
+    console.log(carrito)
+    localStorage.setItem("encarrito", JSON.stringify (carrito));
+console.log(localStorage.getItem("encarrito"))
+});
+ver9.addEventListener("click", () =>{
+    carrito.push(productos[9])
+    console.log(carrito)
+    localStorage.setItem("encarrito", JSON.stringify (carrito));
+console.log(localStorage.getItem("encarrito"))
+});
+ver10.addEventListener("click", () =>{
+    carrito.push(productos[10])
+    console.log(carrito)
+    localStorage.setItem("encarrito", JSON.stringify (carrito));
+console.log(localStorage.getItem("encarrito"))
+});
+ver11.addEventListener("click", () =>{
+    carrito.push(productos[11])
+    console.log(carrito)
+    localStorage.setItem("encarrito", JSON.stringify (carrito));
+console.log(localStorage.getItem("encarrito"))
+});
