@@ -6,8 +6,9 @@ let div = document.getElementById("productos");
 console.log (paracarrito);
 for(let i = 0; i < paracarrito.length; i++){
     const zapa = paracarrito[i]
-const li = document.createElement("li");
+const li = document.createElement(`li`);
 const litext = document.createTextNode(`${zapa.nombre}$${zapa.precio}`);
+
 console.log(zapa)
 li.appendChild(litext);
 ul.appendChild(li)
@@ -17,24 +18,21 @@ let totalCarrito = paracarrito.reduce((acc, prod) => acc + parseInt( prod.precio
 console.log(totalCarrito)
 const p = document.createElement("p");
 const ptext = document.createTextNode(`total = ${totalCarrito} `)
+let button = document.createElement(`button`)
+button.innerHTML = `eliminar`
+button.setAttribute("id", "ec")
 console.log(p)
 p.append(ptext);
 div.append(p);
+p.append(button);
 
-
-
-
-let btnVaciarTodo = document.getElementById("btnVaciarLocalStorage");
-function borrarDatos(storage) {
-    storage.clear();
+//revisar
+let ec = document.getElementById("ec");
+function borrarDatoUnico(storage, encarrito) {
+    storage.removeItem(encarrito);
 }
-//borrar item
-function borrarDatoUnico(storage, clave) {
-    storage.removeItem(clave);
-}
-
-btnVaciarTodo.addEventListener("click", () => {
-    borrarDatos(localStorage);
-});
+ec.addEventListener("click", () => {
+    borrarDatoUnico(localStorage)
+})
 
 

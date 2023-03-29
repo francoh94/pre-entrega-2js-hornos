@@ -32,27 +32,19 @@ btnr.addEventListener("click" , (e) =>{
 })
 let usuarior = JSON.parse(localStorage.getItem("user"))
     console.log(usuarior)
-function login(){
+    
+    
+    
+    function login(){
     let emailInput = document.getElementById('email').value;
     let passwordInput = document.getElementById('password').value;
-    const userlogin = {
-        email : emailInput,
-        password : passwordInput
+    const user = ausuario.find(u => u.user === emailInput);
+    console.log(user)
+    if(user.password === passwordInput){
+        isLoggedIn = true;}else{
+            isLoggedIn = false
     }
-    console.log(userlogin)
-    for (let i = 0; i < usuarior.length; i++) {
-        const usuarior = {
-            user : usuarior.user,
-            pass : usuarior.password
-        }
-        isLoggedIn = false
-    if(usuarior && usuarior.user === userlogin.email && usuarior.password === userlogin.password){
-        isLoggedIn = true;}
-        //else
-        //isLoggedIn = false
-        //
-    console.log(isLoggedIn);
-    }
+    return true, false
     }
     btnLogin.addEventListener("click" , (e) =>{
         e.preventDefault();

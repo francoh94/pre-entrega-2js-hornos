@@ -1,3 +1,4 @@
+//consultar profe por function
 const ver = document.getElementById("i1")
 const ver1 = document.getElementById("i2")
 const ver2 = document.getElementById("i3")

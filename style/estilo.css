@@ -222,6 +222,12 @@ h2{
     font-size: x-large;
     text-align: center;
 }
+div p button{
+    background-color: greenyellow;
+    border-radius: 5px;
+    margin-inline: 30px;
+    font-size: medium;
+}
 footer{
     background-color: black;
     color: white;
