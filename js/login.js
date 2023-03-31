@@ -18,6 +18,10 @@ function guardarDatos(storage) {
     console.log(ausuario)
     storage.setItem("user", JSON.stringify(ausuario));
 }
+btnr.addEventListener("click" , (e) =>{
+    e.preventDefault()
+    guardarDatos(localStorage)
+})
 
 function borrarDatos(storage) {
     storage.clear();
@@ -26,10 +30,14 @@ function borrarDatos(storage) {
 function borrarDatoUnico(storage, clave) {
     storage.removeItem(clave);
 }
-btnr.addEventListener("click" , (e) =>{
-    e.preventDefault()
-    guardarDatos(localStorage)
-})
+
+
+
+
+
+
+
+
 let usuarior = JSON.parse(localStorage.getItem("user"))
     console.log(usuarior)
     
@@ -38,18 +46,32 @@ let usuarior = JSON.parse(localStorage.getItem("user"))
     function login(){
     let emailInput = document.getElementById('email').value;
     let passwordInput = document.getElementById('password').value;
+    console.log(ausuario)
+    console.log(emailInput)
     const user = ausuario.find(u => u.user === emailInput);
-    console.log(user)
-    if(user.password === passwordInput){
-        isLoggedIn = true;}else{
-            isLoggedIn = false
+    
+    if(user.password === passwordInput)
+    {
+        isLoggedIn = true;
+        window.location.href="../pages/carrito.html";
+    console.log(isLoggedIn)
+}else{
+        isLoggedIn = false
+console.log(isLoggedIn)
     }
-    return true, false
+    
     }
-    btnLogin.addEventListener("click" , (e) =>{
-        e.preventDefault();
+    btnLogin.addEventListener("click" , () =>{
         login()
     })
+
+
+
+
+
+
+
+
 
 
 //btnVaciarTodo.addEventListener("click", () => {
@@ -61,11 +83,11 @@ btnVaciarSessionStorage.addEventListener("click", () => {
     borrarDatos(sessionStorage);
 });
 
-//btnLogin.addEventListener("click", () => {
+btnLogin.addEventListener("click", () => {
 
-    //if (checkRememberMe.checked) {
-    //    guardarDatos(localStorage);
-    //} else {
-    //    guardarDatos(sessionStorage);
-    //}
-//});
+    if (checkRememberMe.checked) {
+        guardarDatos(localStorage);
+    } else {
+    guardarDatos(sessionStorage);
+}
+});

@@ -26,13 +26,11 @@ p.append(ptext);
 div.append(p);
 p.append(button);
 
-//revisar
-let ec = document.getElementById("ec");
-function borrarDatoUnico(storage, encarrito) {
-    storage.removeItem(encarrito);
-}
-ec.addEventListener("click", () => {
-    borrarDatoUnico(localStorage)
+let eliminarc = document.getElementById("ec");
+
+eliminarc.addEventListener("click", function(){
+    localStorage.removeItem("encarrito");
+    location.reload()
 })
 
 
