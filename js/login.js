@@ -53,13 +53,13 @@ let usuarior = JSON.parse(localStorage.getItem("user"))
     if(user.password === passwordInput)
     {
         isLoggedIn = true;
-        window.location.href="../pages/carrito.html";
+        window.location.href="./carrito.html";
     console.log(isLoggedIn)
 }else{
         isLoggedIn = false
 console.log(isLoggedIn)
     }
-    
+    sessionStorage.setItem("log", JSON.stringify(isLoggedIn));
     }
     btnLogin.addEventListener("click" , () =>{
         login()
