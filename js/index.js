@@ -26,6 +26,18 @@ const productos = [
     producto11 = {id:"11", nombre:"nike3", precio:"6500"}, 
     producto12 = {id:"12", nombre:"nike4", precio:"7600"},
     ];
+    const nombre = JSON.parse(sessionStorage.getItem("user"))
+    console.log(nombre)
+    if(sessionStorage.getItem
+        ("log") === "true") {
+    if (!document.getElementById("hola")) {
+        
+        const p = document.createElement("p");
+        p.setAttribute("id", "holalogin")
+const ptext = document.createTextNode(`Hola  ${nombre}`)
+p.append(ptext);
+divindex.append(p);}
+    }
 
 ver.addEventListener("click", () =>{
     carrito.push(productos[0])

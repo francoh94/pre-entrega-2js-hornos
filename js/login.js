@@ -10,7 +10,9 @@ const ausuario = []
 function guardarDatos(storage) {
     let user = document.getElementById("emailr").value;
     let pass = document.getElementById("passwordr").value;
+    let nombre = document.getElementById("name").value
     let usuario = {
+        nombre : nombre,
         user: user,
         password: pass
     }
@@ -21,10 +23,6 @@ btnr.addEventListener("click" , (e) =>{
     e.preventDefault()
     guardarDatos(localStorage)
 })
-
-//function borrarDatos(storage) {
-//    storage.clear();
-//}
 
 function borrarDatoUnico(storage) {
     storage.removeItem("log");
@@ -64,8 +62,10 @@ let usuarior = JSON.parse(localStorage.getItem("user"))
     if(user.password === passwordInput)
     {
         isLoggedIn = true;
+        sessionStorage.setItem("user", JSON.stringify(user.nombre));
         window.location.href="../index.html";
     console.log(isLoggedIn)
+    
 }else{
         isLoggedIn = false
         if (!document.getElementById("uincorrecto")) {

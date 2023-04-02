@@ -46,7 +46,7 @@ pagart.addEventListener("click", function (){
             if (!document.getElementById("miPpago")) {
         const p = document.createElement("p");
         p.setAttribute("id", "miPpago")
-const ptext = document.createTextNode(`Pagao realizado Total:${totalCarrito}`)
+const ptext = document.createTextNode(`Pago realizado, Total:${totalCarrito}`)
 p.appendChild(ptext);
 ptotal.appendChild(p);}
     } else {
