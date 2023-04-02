@@ -22,12 +22,12 @@ btnr.addEventListener("click" , (e) =>{
     guardarDatos(localStorage)
 })
 
-function borrarDatos(storage) {
-    storage.clear();
-}
+//function borrarDatos(storage) {
+//    storage.clear();
+//}
 
-function borrarDatoUnico(storage, clave) {
-    storage.removeItem(clave);
+function borrarDatoUnico(storage) {
+    storage.removeItem("log");
 }
 
 const usuariosstorage = () => {
@@ -52,7 +52,15 @@ let usuarior = JSON.parse(localStorage.getItem("user"))
     console.log(ausuario)
     console.log(emailInput)
     const user = ausuario.find(u => u.user === emailInput);
-    
+    if (user != undefined){
+        console.log(user);}else{
+            if (!document.getElementById("usincorrecto")) {
+                const p = document.createElement("p");
+                p.setAttribute("id", "usincorrecto")
+        const ptext = document.createTextNode(`email incorrecto`)
+        p.appendChild(ptext);
+        clogin.appendChild(p);}
+        }
     if(user.password === passwordInput)
     {
         isLoggedIn = true;
@@ -60,34 +68,32 @@ let usuarior = JSON.parse(localStorage.getItem("user"))
     console.log(isLoggedIn)
 }else{
         isLoggedIn = false
+        if (!document.getElementById("uincorrecto")) {
+            const p = document.createElement("p");
+            p.setAttribute("id", "uincorrecto")
+    const ptext = document.createTextNode(`Contraseña incorrecta`)
+    p.appendChild(ptext);
+    clogin.appendChild(p);}
 console.log(isLoggedIn)
     }
+
     sessionStorage.setItem("log", JSON.stringify(isLoggedIn));
     }
-    btnLogin.addEventListener("click" , () =>{
+    btnLogin.addEventListener("click" , (e) =>{
         login()
+        e.preventDefault()
     })
 
 
 
 
-
-
-
-
-
-
-//btnVaciarTodo.addEventListener("click", () => {
-//    borrarDatos(localStorage);
-//    borrarDatos(sessionStorage);
-//});
-
 btnVaciarSessionStorage.addEventListener("click", () => {
-    borrarDatos(sessionStorage);
+    borrarDatoUnico(sessionStorage);
+    location.reload()
 });
 
-btnLogin.addEventListener("click", () => {
-
+btnLogin.addEventListener("click", (e) => {
+    e.preventDefault()
     if (checkRememberMe.checked) {
         guardarDatos(localStorage);
     } else {
