@@ -15,7 +15,6 @@ function guardarDatos(storage) {
         password: pass
     }
     ausuario.push(usuario)
-    console.log(ausuario)
     storage.setItem("user", JSON.stringify(ausuario));
 }
 btnr.addEventListener("click" , (e) =>{
@@ -31,17 +30,21 @@ function borrarDatoUnico(storage, clave) {
     storage.removeItem(clave);
 }
 
+const usuariosstorage = () => {
+    const ustorage = JSON.parse(localStorage.getItem("user"));
+    console.log(ustorage)
+    if (ustorage !== null) {
+        ustorage.forEach(function(user) {
+        ausuario.push(user);
+        });
+    }
+}
+usuariosstorage(ausuario)
 
-
-
-
-
-
+console.log(ausuario)
 
 let usuarior = JSON.parse(localStorage.getItem("user"))
     console.log(usuarior)
-    
-    
     
     function login(){
     let emailInput = document.getElementById('email').value;
@@ -53,7 +56,7 @@ let usuarior = JSON.parse(localStorage.getItem("user"))
     if(user.password === passwordInput)
     {
         isLoggedIn = true;
-        window.location.href="./carrito.html";
+        window.location.href="../index.html";
     console.log(isLoggedIn)
 }else{
         isLoggedIn = false

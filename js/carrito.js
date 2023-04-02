@@ -26,7 +26,7 @@ button2.innerHTML = `pagar`
 button2.setAttribute("id", "pagar")
 console.log(p)
 p.append(ptext);
-div.append(p);
+ptotal.append(p);
 p.append(button1);
 p.append(button2);
 
@@ -47,8 +47,8 @@ pagart.addEventListener("click", function (){
         const p = document.createElement("p");
         p.setAttribute("id", "miPpago")
 const ptext = document.createTextNode(`Pagao realizado Total:${totalCarrito}`)
-p.append(ptext);
-ptotal.append(p);}
+p.appendChild(ptext);
+ptotal.appendChild(p);}
     } else {
         
         laul.innerHTML = "";
@@ -57,8 +57,8 @@ ptotal.append(p);}
         p.setAttribute("id", "miParrafo")
         const ptext = document.createTextNode("Debes loguerte para completar el pago")
         
-        p.append(ptext);
-ptotal.append(p);
+        p.appendChild(ptext);
+ptotal.appendChild(p);
     }
     }
 });
