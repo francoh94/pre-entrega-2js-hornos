@@ -35,6 +35,8 @@ function guardarDatos(storage) {
         storage.setItem("user", JSON.stringify(usuarior));
         Swal.fire(
             'registro exitoso!',
+            '',
+            'success'
             )
         
         console.log(usuarior);}
@@ -95,8 +97,9 @@ console.log(ausuario)
     sessionStorage.setItem("log", JSON.stringify(isLoggedIn));
     }
     btnLogin.addEventListener("click" , (e) =>{
-        login()
         e.preventDefault()
+        login()
+        
     })
 
 
@@ -107,11 +110,11 @@ btnVaciarSessionStorage.addEventListener("click", () => {
     location.reload()
 });
 
-btnLogin.addEventListener("click", (e) => {
-    e.preventDefault()
-    if (checkRememberMe.checked) {
-        guardarDatos(localStorage);
-    } else {
-    guardarDatos(sessionStorage);
-}
-});
+//btnLogin.addEventListener("click", (e) => {
+    //e.preventDefault()
+    //if (checkRememberMe.checked) {
+    //    guardarDatos(localStorage);
+    //} else {
+    //guardarDatos(sessionStorage);
+//}
+//});
