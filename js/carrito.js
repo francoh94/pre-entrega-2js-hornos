@@ -2,10 +2,9 @@ let paracarrito = JSON.parse(localStorage.getItem("encarrito"));
 let ul = document.getElementById("laul");
 let div = document.getElementById("productos");
 
-
 console.log (paracarrito);
-for(let i = 0; i < paracarrito.length; i++){
-    const zapa = paracarrito[i]
+for(const element of paracarrito){
+    const zapa = element
 const li = document.createElement(`li`);
 const litext = document.createTextNode(`${zapa.nombre}$${zapa.precio}`);
 
@@ -43,22 +42,51 @@ let pagart = document.getElementById("pagar");
 pagart.addEventListener("click", function (){
     if(sessionStorage.getItem
         ("log") === "true") {
-            if (!document.getElementById("miPpago")) {
-        const p = document.createElement("p");
-        p.setAttribute("id", "miPpago")
-const ptext = document.createTextNode(`Pago realizado, Total:${totalCarrito}`)
-p.appendChild(ptext);
-ptotal.appendChild(p);}
-    } else {
-        
-        laul.innerHTML = "";
-        if (!document.getElementById("miParrafo")) {
-        const p = document.createElement("p");
-        p.setAttribute("id", "miParrafo")
-        const ptext = document.createTextNode("Debes loguerte para completar el pago")
-        
-        p.appendChild(ptext);
-ptotal.appendChild(p);
-    }
-    }
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+            })
+            
+            swalWithBootstrapButtons.fire({
+                title: 'Completar pago?',
+                text: `Total:${totalCarrito}`,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'pagar!',
+                cancelButtonText: 'cancelar!',
+                reverseButtons: true
+                }).then((result) => {
+                if (result.isConfirmed) {
+                swalWithBootstrapButtons.fire(
+                    'Pago realizado!',
+                    'Que lo disfrutes.',
+                    'success'
+                )
+            localStorage.removeItem("encarrito");
+            laul.innerHTML = ""
+            ptotal.innerHTML = "Disfruta tu compra";
+                } else if (
+                    
+                result.dismiss === Swal.DismissReason.cancel
+                ) {
+                swalWithBootstrapButtons.fire(
+                    'pago cancelado',
+                    '',
+                    'error'
+                )
+                }
+            })
+            } 
+    else {
+        (Swal.fire({
+            icon: 'error',
+            title: 'Debes logearte para terminar la compra',
+            text: '',
+            footer: '<a href="">Why do I have this issue?</a>'
+            }))
+}
+
 });

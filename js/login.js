@@ -3,23 +3,43 @@ let btnVaciarSessionStorage = document.getElementById("btnVaciarSessionStorage")
 let btnVaciarTodo = document.getElementById("btnVaciarLocalStorage");
 let checkRememberMe = document.getElementById("rememberMe");
 let btnr = document.getElementById("btnr")
-const ausuario = []
-
-
-
+usuarior = []
+ausuario =[]
+console.log(ausuario)
 function guardarDatos(storage) {
-    let user = document.getElementById("emailr").value;
+    let userr = document.getElementById("emailr").value;
     let pass = document.getElementById("passwordr").value;
     let nombre = document.getElementById("name").value
     let usuario = {
         nombre : nombre,
-        user: user,
+        user: userr,
         password: pass
     }
-    ausuario.push(usuario)
-    storage.setItem("user", JSON.stringify(ausuario));
+    const userdr = ausuario.find(u => u.user === userr);
+    if (userdr !== undefined){
+        Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'ESTE CORREO YA ESTA REGISTRADO!',
+        footer: '<a href="">Why do I have this issue?</a>'
+        });}else{
+            console.log(userdr)}
+    if (pass == ""){
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'ingresa una contraseña valida!',
+            footer: '<a href="">Why do I have this issue?</a>'
+    })}else{
+        usuarior.push(usuario)
+        storage.setItem("user", JSON.stringify(usuarior));
+        Swal.fire(
+            'registro exitoso!',
+            )
+        
+        console.log(usuarior);}
 }
-btnr.addEventListener("click" , (e) =>{
+btnregistro.addEventListener("click" , (e) =>{
     e.preventDefault()
     guardarDatos(localStorage)
 })
@@ -27,8 +47,7 @@ btnr.addEventListener("click" , (e) =>{
 function borrarDatoUnico(storage) {
     storage.removeItem("log");
 }
-
-const usuariosstorage = () => {
+const usuariosstorage = (ausuario) => {
     const ustorage = JSON.parse(localStorage.getItem("user"));
     console.log(ustorage)
     if (ustorage !== null) {
@@ -38,11 +57,8 @@ const usuariosstorage = () => {
     }
 }
 usuariosstorage(ausuario)
-
 console.log(ausuario)
 
-let usuarior = JSON.parse(localStorage.getItem("user"))
-    console.log(usuarior)
     
     function login(){
     let emailInput = document.getElementById('email').value;
@@ -52,29 +68,28 @@ let usuarior = JSON.parse(localStorage.getItem("user"))
     const user = ausuario.find(u => u.user === emailInput);
     if (user != undefined){
         console.log(user);}else{
-            if (!document.getElementById("usincorrecto")) {
-                const p = document.createElement("p");
-                p.setAttribute("id", "usincorrecto")
-        const ptext = document.createTextNode(`email incorrecto`)
-        p.appendChild(ptext);
-        clogin.appendChild(p);}
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'correo incorrecto!',
+                footer: '<a href="">Why do I have this issue?</a>'
+                })
         }
     if(user.password === passwordInput)
     {
         isLoggedIn = true;
         sessionStorage.setItem("user", JSON.stringify(user.nombre));
-        window.location.href="../index.html";
+        //window.location.href="../index.html";
     console.log(isLoggedIn)
     
 }else{
         isLoggedIn = false
-        if (!document.getElementById("uincorrecto")) {
-            const p = document.createElement("p");
-            p.setAttribute("id", "uincorrecto")
-    const ptext = document.createTextNode(`Contraseña incorrecta`)
-    p.appendChild(ptext);
-    clogin.appendChild(p);}
-console.log(isLoggedIn)
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'contraseña incorrecto!',
+            footer: '<a href="">Why do I have this issue?</a>'
+            })
     }
 
     sessionStorage.setItem("log", JSON.stringify(isLoggedIn));

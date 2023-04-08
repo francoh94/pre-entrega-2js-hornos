@@ -64,9 +64,9 @@ main{
     font-size:medium;
 }
 .champs button{
-    height: 40px;
-    width: 60px;
     background-color: greenyellow;
+    font-weight: bold;
+    border-radius: 0px;
 }
 .champs button:hover{
     background-color: indigo;
@@ -187,6 +187,7 @@ h2{
     background-color: greenyellow;
     color: black;
     font-weight: bold;
+    border-radius: 5px;
 }
 .cregistro button:hover{
     background-image: url(../media/marble-2398956_1280.jpg);
