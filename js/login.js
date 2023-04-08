@@ -2,7 +2,7 @@ let btnLogin = document.getElementById("btnLogin");
 let btnVaciarSessionStorage = document.getElementById("btnVaciarSessionStorage");
 let btnVaciarTodo = document.getElementById("btnVaciarLocalStorage");
 let checkRememberMe = document.getElementById("rememberMe");
-let btnr = document.getElementById("btnr")
+let formulario = document.getElementById("form")
 usuarior = []
 ausuario =[]
 console.log(ausuario)
@@ -16,6 +16,7 @@ function guardarDatos(storage) {
         password: pass
     }
     const userdr = ausuario.find(u => u.user === userr);
+    console.log(userdr)
     if (userdr !== undefined){
         Swal.fire({
         icon: 'error',
@@ -23,25 +24,20 @@ function guardarDatos(storage) {
         text: 'ESTE CORREO YA ESTA REGISTRADO!',
         footer: '<a href="">Why do I have this issue?</a>'
         });}else{
-            console.log(userdr)}
-    if (pass == ""){
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'ingresa una contraseña valida!',
-            footer: '<a href="">Why do I have this issue?</a>'
-    })}else{
-        usuarior.push(usuario)
-        storage.setItem("user", JSON.stringify(usuarior));
-        Swal.fire(
-            'registro exitoso!',
-            '',
-            'success'
-            )
-        
+            Swal.fire(
+                'registro exitoso!',
+                '',
+                'success'
+            ).then((result) => {
+                if (result.isConfirmed) {
+                location.reload();
+        }})
+            usuarior.push(usuario)
+            storage.setItem("user", JSON.stringify(usuarior));
+            }
         console.log(usuarior);}
-}
-btnregistro.addEventListener("click" , (e) =>{
+
+formulario.addEventListener("submit" , (e) =>{
     e.preventDefault()
     guardarDatos(localStorage)
 })
@@ -81,7 +77,7 @@ console.log(ausuario)
     {
         isLoggedIn = true;
         sessionStorage.setItem("user", JSON.stringify(user.nombre));
-        //window.location.href="../index.html";
+        window.location.href="./carrito.html";
     console.log(isLoggedIn)
     
 }else{

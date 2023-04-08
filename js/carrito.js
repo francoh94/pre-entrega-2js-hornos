@@ -86,7 +86,8 @@ pagart.addEventListener("click", function (){
             title: 'Debes logearte para terminar la compra',
             text: '',
             footer: '<a href="">Why do I have this issue?</a>'
-            }))
-}
-
-});
+            })).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href="./login.html";;
+}})
+}})
