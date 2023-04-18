@@ -42,6 +42,7 @@ const productos = [
                 })
     }
     )
+    
     const nombre = JSON.parse(sessionStorage.getItem("user"))
     if(sessionStorage.getItem
         ("log") === "true") {

@@ -31,68 +31,82 @@ eliminarcarrito.addEventListener("click", function(){
     location.reload()
 })
 let pagart = document.getElementById("pagar");
-pagart.addEventListener("click", function (){
-    if(sessionStorage.getItem
-        ("log") === "true") {
-            const swalWithBootstrapButtons = Swal.mixin({
-                customClass: {
-                confirmButton: 'btn btn-success',
-                cancelButton: 'btn btn-danger'
-                },
-                buttonsStyling: false
-            })
+function completarPago() {
+    return new Promise((resolve, reject) => {
+    pagart.addEventListener("click", function (){
+        if(sessionStorage.getItem("log") === "true") {
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+        });
             
-            swalWithBootstrapButtons.fire({
-                title: 'Completar pago?',
-                text: `Total:${totalCarrito}`,
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'pagar!',
-                cancelButtonText: 'cancelar!',
-                reverseButtons: true
-                }).then((result) => {
-                if (result.isConfirmed) {
-                swalWithBootstrapButtons.fire(
-                    'Pago realizado!',
-                    'Que lo disfrutes.',
-                    'success'
-                )
+        swalWithBootstrapButtons.fire({
+            title: 'Completar pago?',
+            text: `Total:${totalCarrito}`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'pagar!',
+            cancelButtonText: 'cancelar!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+            swalWithBootstrapButtons.fire(
+                'Pago realizado!',
+                'Que lo disfrutes.',
+                'success'
+            );
             localStorage.removeItem("encarrito");
-            laul.innerHTML = ""
-            cambio.innerHTML = ""
+            laul.innerHTML = "";
+            cambio.innerHTML = "";
             ptotal.innerHTML = "Disfruta tu compra";
-                } else if (
-                    
-                result.dismiss === Swal.DismissReason.cancel
-                ) {
-                swalWithBootstrapButtons.fire(
-                    'pago cancelado',
-                    '',
-                    'error'
-                )
-                }
-            })
-            } 
-    else {
-        (Swal.fire({
+            resolve("Pago completado");
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+            swalWithBootstrapButtons.fire(
+                'pago cancelado',
+                '',
+                'error'
+            );
+            reject("Pago cancelado");
+            }
+        });
+        } else {
+        Swal.fire({
             icon: 'error',
             title: 'Debes logearte para terminar la compra',
             text: '',
             footer: '<a href="">Why do I have this issue?</a>'
-            })).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href="./login.html";;
-}})
-}})
+        }).then((result) => {
+            if (result.isConfirmed) {
+            window.location.href="./login.html";
+            }
+            reject("No se inició sesión");
+        });
+        }
+    });
+    });
+    }
+    completarPago()
+    .then((mensaje) => {
+    console.log(mensaje);
+    })
+    .catch((error) => {
+    console.error(error);
+    });
 const keymoneda = `d9ba5d8d4d9344fd9367402ed0e360d7`
 const divcambio = document.getElementById(`cambio`)
-const url = `https://openexchangerates.org/api/latest.json?app_id=${keymoneda}`;
-        fetch(url)
-        .then(response => response.json())
-        .then(data => { console.log(data)
-        let uyu = (data.rates.UYU)
-        console.log(uyu);
-        if (totalCarrito !== `undefined` && totalCarrito !== 0 && totalCarrito !== `null`){
-            divcambio.textContent = `Total usd = ${parseInt(totalCarrito/uyu).toFixed(1)}`
+        const fetchusd = async ()=>{
+            try {
+                const usdapi = await fetch(`https://openexchangerates.org/api/latest.json?app_id=${keymoneda}`);
+                const data = await usdapi.json()
+                    let uyu = (data.rates.UYU)
+                    if (totalCarrito !== `undefined` && totalCarrito !== 0 && totalCarrito !== `null`){
+                        divcambio.textContent = `Total usd = ${parseInt(totalCarrito/uyu).toFixed(1)}`
+                    }
+                    
+            }catch{
+                console.log(err)}
         }
-        })
+        fetchusd();
