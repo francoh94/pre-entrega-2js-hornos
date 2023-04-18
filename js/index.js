@@ -1,4 +1,3 @@
-
 let carrito = []
 const productos = [
     producto = {id:"i1", nombre:"adidas1", precio:"7500", descuento:"10%"},
@@ -14,9 +13,7 @@ const productos = [
     producto = {id:"i11", nombre:"nike3", precio:"6500"}, 
     producto = {id:"i12", nombre:"nike4", precio:"7600"},
     ];
-
     const todosloschamps = document.querySelector(`.todosloschamps`)
-
     productos.forEach(producto => {
         const card = document.createElement("div")
         card.className = "col-md-3 mb-3 mx-2 champs" 
@@ -56,3 +53,20 @@ const ptext = document.createTextNode(`Hola  ${nombre}`)
 p.append(ptext);
 divindex.append(p);}
     }
+const key = `a5e17608ff67eb9703700ec1458f41de`
+const tempvalor = document.getElementById("temp")
+const divtemp = document.getElementById("divtemp")
+if (navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(ubi => {
+        const lat = ubi.coords.latitude;
+        const long = ubi.coords.longitude;
+        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${key}`;
+        fetch(url)
+        .then(response => response.json())
+        .then(data => { console.log(data)
+        let temp = (data.main.temp);
+        let tempc = parseInt(temp - 273.15)
+        tempvalor.textContent = `${tempc}°C`;
+        })
+    });
+}

@@ -1,6 +1,5 @@
 let btnLogin = document.getElementById("btnLogin");
 let btnVaciarSessionStorage = document.getElementById("btnVaciarSessionStorage");
-let btnVaciarTodo = document.getElementById("btnVaciarLocalStorage");
 let checkRememberMe = document.getElementById("rememberMe");
 let formulario = document.getElementById("form")
 usuarior = []
@@ -36,16 +35,14 @@ function guardarDatos(storage) {
             storage.setItem("user", JSON.stringify(usuarior));
             }
         console.log(usuarior);}
-
-formulario.addEventListener("submit" , (e) =>{
+    formulario.addEventListener("submit" , (e) =>{
     e.preventDefault()
     guardarDatos(localStorage)
-})
-
-function borrarDatoUnico(storage) {
+    })
+    function borrarDatoUnico(storage) {
     storage.removeItem("log");
-}
-const usuariosstorage = (ausuario) => {
+    }
+    const usuariosstorage = (ausuario) => {
     const ustorage = JSON.parse(localStorage.getItem("user"));
     console.log(ustorage)
     if (ustorage !== null) {
@@ -53,11 +50,9 @@ const usuariosstorage = (ausuario) => {
         ausuario.push(user);
         });
     }
-}
-usuariosstorage(ausuario)
-console.log(ausuario)
-
-    
+    }
+    usuariosstorage(ausuario)
+    console.log(ausuario)
     function login(){
     let emailInput = document.getElementById('email').value;
     let passwordInput = document.getElementById('password').value;
@@ -80,7 +75,7 @@ console.log(ausuario)
         window.location.href="./carrito.html";
     console.log(isLoggedIn)
     
-}else{
+    }else{
         isLoggedIn = false
         Swal.fire({
             icon: 'error',
@@ -89,28 +84,14 @@ console.log(ausuario)
             footer: '<a href="">Why do I have this issue?</a>'
             })
     }
-
     sessionStorage.setItem("log", JSON.stringify(isLoggedIn));
     }
     btnLogin.addEventListener("click" , (e) =>{
         e.preventDefault()
         login()
-        
     })
-
-
-
-
-btnVaciarSessionStorage.addEventListener("click", () => {
+    btnVaciarSessionStorage.addEventListener("click", () => {
     borrarDatoUnico(sessionStorage);
     location.reload()
 });
 
-//btnLogin.addEventListener("click", (e) => {
-    //e.preventDefault()
-    //if (checkRememberMe.checked) {
-    //    guardarDatos(localStorage);
-    //} else {
-    //guardarDatos(sessionStorage);
-//}
-//});
